@@ -9,3 +9,9 @@ services:
         value: "*"
       - key: DEVELOPMENT
         value: "True"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
