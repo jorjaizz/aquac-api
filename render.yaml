@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: aquacrop-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: DEVELOPMENT
+        value: "True"

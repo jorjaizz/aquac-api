@@ -1,0 +1,71 @@
+[
+  {
+    "slug": "maiz-trigo-soya",
+    "name": "Maiz - Trigo - Soja",
+    "description": "Rotacion de tres cultivos en Jocotenango, Guatemala. Definicion provisional hasta cerrar el plan agronomico.",
+    "seasons": 20,
+    "start_year": 2004,
+    "weather": { "type": "builtin", "name": "jocotenango_climate.txt" },
+    "soil_file": "jocotenango_soil.json",
+    "initial_water_content": { "value": ["FC"] },
+    "irrigation": { "method": 0 },
+    "cycle": [
+      {
+        "crop": { "name": "Maize", "planting_date": "05/01" },
+        "sim_start": "05/01",
+        "sim_end": "10/31"
+      },
+      {
+        "crop": { "name": "Wheat", "planting_date": "05/01" },
+        "sim_start": "05/01",
+        "sim_end": "09/15"
+      },
+      {
+        "crop": { "name": "Soybean", "planting_date": "05/15" },
+        "sim_start": "05/15",
+        "sim_end": "10/15"
+      }
+    ]
+  },
+  {
+    "slug": "maiz-monocultivo",
+    "name": "Maiz monocultivo",
+    "description": "Linea base de maiz de secano durante 20 temporadas.",
+    "seasons": 20,
+    "start_year": 2004,
+    "weather": { "type": "builtin", "name": "jocotenango_climate.txt" },
+    "soil_file": "jocotenango_soil.json",
+    "initial_water_content": { "value": ["FC"] },
+    "irrigation": { "method": 0 },
+    "cycle": [
+      {
+        "crop": { "name": "Maize", "planting_date": "05/01" },
+        "sim_start": "05/01",
+        "sim_end": "10/31"
+      }
+    ]
+  },
+  {
+    "slug": "maiz-frijol",
+    "name": "Maiz - Frijol",
+    "description": "Rotacion de maiz con leguminosa para comparar el efecto sobre el rendimiento.",
+    "seasons": 20,
+    "start_year": 2004,
+    "weather": { "type": "builtin", "name": "jocotenango_climate.txt" },
+    "soil_file": "jocotenango_soil.json",
+    "initial_water_content": { "value": ["FC"] },
+    "irrigation": { "method": 0 },
+    "cycle": [
+      {
+        "crop": { "name": "Maize", "planting_date": "05/01" },
+        "sim_start": "05/01",
+        "sim_end": "10/31"
+      },
+      {
+        "crop": { "name": "DryBean", "planting_date": "05/15" },
+        "sim_start": "05/15",
+        "sim_end": "09/30"
+      }
+    ]
+  }
+]

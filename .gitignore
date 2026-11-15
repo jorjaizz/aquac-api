@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Tests and caches
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Model data that is not required by the API
+aquacrop/data/cmip6_woolpit/
+*.nc

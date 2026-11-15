@@ -1,0 +1,397 @@
+{
+  "slug": "maiz-monocultivo",
+  "years": 20,
+  "model_version": "3.1.0",
+  "computed_at": "2026-11-15T06:15:59.889064+00:00",
+  "result": {
+    "success": true,
+    "seasons": [
+      {
+        "index": 0,
+        "crop": "Maize",
+        "sim_start_time": "2004/05/01",
+        "sim_end_time": "2004/10/31",
+        "execution_time_seconds": 0.6112,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2004-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 8.997190852672855,
+            "Fresh yield (tonne/ha)": 9.99687872519206,
+            "Yield potential (tonne/ha)": 9.031226602876487,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "crop": "Maize",
+        "sim_start_time": "2005/05/01",
+        "sim_end_time": "2005/10/31",
+        "execution_time_seconds": 0.6249,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2005-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 5.783589489298314,
+            "Fresh yield (tonne/ha)": 6.426210543664793,
+            "Yield potential (tonne/ha)": 5.804832677547277,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "crop": "Maize",
+        "sim_start_time": "2006/05/01",
+        "sim_end_time": "2006/10/31",
+        "execution_time_seconds": 0.524,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2006-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 7.652929211969719,
+            "Fresh yield (tonne/ha)": 8.503254679966355,
+            "Yield potential (tonne/ha)": 7.686193285875304,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "crop": "Maize",
+        "sim_start_time": "2007/05/01",
+        "sim_end_time": "2007/10/31",
+        "execution_time_seconds": 0.4605,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2007-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 4.622722013313604,
+            "Fresh yield (tonne/ha)": 5.136357792570671,
+            "Yield potential (tonne/ha)": 4.654600466088529,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 4,
+        "crop": "Maize",
+        "sim_start_time": "2008/05/01",
+        "sim_end_time": "2008/10/31",
+        "execution_time_seconds": 0.5809,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2008-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 5.499292353181979,
+            "Fresh yield (tonne/ha)": 6.110324836868866,
+            "Yield potential (tonne/ha)": 5.519698345292379,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 5,
+        "crop": "Maize",
+        "sim_start_time": "2009/05/01",
+        "sim_end_time": "2009/10/31",
+        "execution_time_seconds": 0.3885,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2009-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 5.215166173523198,
+            "Fresh yield (tonne/ha)": 5.794629081692442,
+            "Yield potential (tonne/ha)": 5.23719309041608,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 6,
+        "crop": "Maize",
+        "sim_start_time": "2010/05/01",
+        "sim_end_time": "2010/10/31",
+        "execution_time_seconds": 0.6461,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2010-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 7.0380925215104115,
+            "Fresh yield (tonne/ha)": 7.820102801678235,
+            "Yield potential (tonne/ha)": 7.062706052466386,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 7,
+        "crop": "Maize",
+        "sim_start_time": "2011/05/01",
+        "sim_end_time": "2011/10/31",
+        "execution_time_seconds": 0.5363,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2011-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 0.543390750078271,
+            "Fresh yield (tonne/ha)": 0.6037675000869678,
+            "Yield potential (tonne/ha)": 0.5466662461797129,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "crop": "Maize",
+        "sim_start_time": "2012/05/01",
+        "sim_end_time": "2012/10/31",
+        "execution_time_seconds": 0.4037,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2012-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 2.0787483314814477,
+            "Fresh yield (tonne/ha)": 2.3097203683127194,
+            "Yield potential (tonne/ha)": 7.342093970230868,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 9,
+        "crop": "Maize",
+        "sim_start_time": "2013/05/01",
+        "sim_end_time": "2013/10/31",
+        "execution_time_seconds": 0.4581,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2013-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 3.3248763685667417,
+            "Fresh yield (tonne/ha)": 3.6943070761852685,
+            "Yield potential (tonne/ha)": 3.3668525740996302,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 10,
+        "crop": "Maize",
+        "sim_start_time": "2014/05/01",
+        "sim_end_time": "2014/10/31",
+        "execution_time_seconds": 0.463,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2014-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 4.951347793125157,
+            "Fresh yield (tonne/ha)": 5.50149754791684,
+            "Yield potential (tonne/ha)": 5.803840291614516,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 11,
+        "crop": "Maize",
+        "sim_start_time": "2015/05/01",
+        "sim_end_time": "2015/10/31",
+        "execution_time_seconds": 0.4766,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2015-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 3.984904764472593,
+            "Fresh yield (tonne/ha)": 4.427671960525103,
+            "Yield potential (tonne/ha)": 4.6611818657976025,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 12,
+        "crop": "Maize",
+        "sim_start_time": "2016/05/01",
+        "sim_end_time": "2016/10/31",
+        "execution_time_seconds": 0.4642,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2016-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 0.0,
+            "Fresh yield (tonne/ha)": 0.0,
+            "Yield potential (tonne/ha)": 0.0,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 13,
+        "crop": "Maize",
+        "sim_start_time": "2017/05/01",
+        "sim_end_time": "2017/10/31",
+        "execution_time_seconds": 0.4372,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2017-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 9.138533648541427,
+            "Fresh yield (tonne/ha)": 10.153926276157142,
+            "Yield potential (tonne/ha)": 9.164358657231787,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 14,
+        "crop": "Maize",
+        "sim_start_time": "2018/05/01",
+        "sim_end_time": "2018/10/31",
+        "execution_time_seconds": 0.5358,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2018-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 10.982517313083083,
+            "Fresh yield (tonne/ha)": 12.202797014536758,
+            "Yield potential (tonne/ha)": 10.949055154859638,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 15,
+        "crop": "Maize",
+        "sim_start_time": "2019/05/01",
+        "sim_end_time": "2019/10/31",
+        "execution_time_seconds": 0.4978,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2019-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 10.931225117180162,
+            "Fresh yield (tonne/ha)": 12.145805685755736,
+            "Yield potential (tonne/ha)": 10.965272780735242,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 16,
+        "crop": "Maize",
+        "sim_start_time": "2020/05/01",
+        "sim_end_time": "2020/10/31",
+        "execution_time_seconds": 0.8328,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2020-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 10.201229778460233,
+            "Fresh yield (tonne/ha)": 11.334699753844703,
+            "Yield potential (tonne/ha)": 10.256566784374064,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 17,
+        "crop": "Maize",
+        "sim_start_time": "2021/05/01",
+        "sim_end_time": "2021/10/31",
+        "execution_time_seconds": 0.7786,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2021-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 8.485552189533264,
+            "Fresh yield (tonne/ha)": 9.428391321703627,
+            "Yield potential (tonne/ha)": 8.513849353755965,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 18,
+        "crop": "Maize",
+        "sim_start_time": "2022/05/01",
+        "sim_end_time": "2022/10/31",
+        "execution_time_seconds": 0.5817,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2022-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 12.960321147722226,
+            "Fresh yield (tonne/ha)": 14.400356830802473,
+            "Yield potential (tonne/ha)": 14.452070938885106,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 19,
+        "crop": "Maize",
+        "sim_start_time": "2023/05/01",
+        "sim_end_time": "2023/10/31",
+        "execution_time_seconds": 0.4401,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Maize",
+            "Harvest Date (YYYY/MM/DD)": "2023-09-10T00:00:00",
+            "Harvest Date (Step)": 131,
+            "Dry yield (tonne/ha)": 0.0,
+            "Fresh yield (tonne/ha)": 0.0,
+            "Yield potential (tonne/ha)": 0.0,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "n_seasons": 20,
+      "mean_dry_yield_tonne_ha": 6.1196,
+      "total_seasonal_irrigation_mm": 0.0,
+      "carry_water_between_seasons": true
+    }
+  }
+}

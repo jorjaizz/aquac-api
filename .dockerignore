@@ -1,0 +1,12 @@
+.git
+.gitignore
+.venv
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+docs
+tests
+~WRL0003.tmp
