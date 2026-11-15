@@ -321,6 +321,11 @@ def run_rotation(request: RotationRequest) -> dict[str, Any]:
             irrigation_config=request.irrigation,
             rotation=request,
         )
+        if not payload["final_stats"]:
+            raise SimulationError(
+                f"season {index + 1} ({season.crop.name}, "
+                f"{season.sim_start_time} to {season.sim_end_time}) produced no harvest results"
+            )
         all_stats.extend(payload["final_stats"])
         seasons.append(
             {

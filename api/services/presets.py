@@ -50,10 +50,14 @@ def load_definitions() -> list[dict[str, Any]]:
 def _validate_definition(definition: dict[str, Any]) -> None:
     if not isinstance(definition, dict):
         raise PresetError("every rotation definition must be an object")
-    for key in ("slug", "name", "cycle", "weather", "soil_file"):
+    for key in ("slug", "name", "weather", "soil_file"):
         if not definition.get(key):
             raise PresetError(f"rotation definition is missing '{key}'")
-    if not isinstance(definition["cycle"], list) or not definition["cycle"]:
+    if definition.get("status") == "pending_model":
+        if definition.get("simulation_supported") is not False:
+            raise PresetError("pending_model presets must not claim simulation support")
+        return
+    if not isinstance(definition.get("cycle"), list) or not definition["cycle"]:
         raise PresetError("rotation 'cycle' must be a non-empty list")
     seasons = int(definition.get("seasons", 20))
     if seasons <= 0:
@@ -61,7 +65,6 @@ def _validate_definition(definition: dict[str, Any]) -> None:
     for item in definition["cycle"]:
         if not item.get("crop") or not item.get("sim_start") or not item.get("sim_end"):
             raise PresetError("every cycle item needs crop, sim_start and sim_end")
-
 
 def get_local_definition(slug: str) -> dict[str, Any]:
     for definition in load_definitions():
@@ -95,6 +98,9 @@ def _month_day(value: str) -> tuple[int, int]:
 
 def expand_seasons(definition: dict[str, Any]) -> list[dict[str, Any]]:
     """Expand the crop cycle into one season per year, in chronological order."""
+    _validate_definition(definition)
+    if definition.get("status") == "pending_model":
+        raise PresetError(f"preset {definition['slug']} is pending a validated perennial-crop model")
     cycle = definition["cycle"]
     start_year = int(definition.get("start_year", 2004))
     seasons = int(definition.get("seasons", 20))
@@ -118,6 +124,8 @@ def expand_seasons(definition: dict[str, Any]) -> list[dict[str, Any]]:
 
 def build_rotation_request(definition: dict[str, Any]) -> RotationRequest:
     _validate_definition(definition)
+    if definition.get("status") == "pending_model":
+        raise PresetError(f"preset {definition['slug']} is pending a validated perennial-crop model")
     payload = {
         "weather": definition["weather"],
         "soil": load_soil_file(definition["soil_file"]),
@@ -234,10 +242,12 @@ def _summary(entry: dict[str, Any] | None) -> dict[str, Any]:
         return {"computed": False, "computed_at": None, "mean_dry_yield_tonne_ha": None}
     result = entry.get("result") or {}
     summary = result.get("summary") or {}
+    computed = bool(result.get("success", True))
     return {
-        "computed": True,
-        "computed_at": entry.get("computed_at"),
-        "mean_dry_yield_tonne_ha": summary.get("mean_dry_yield_tonne_ha"),
+        "computed": computed,
+        "status": result.get("status", "ready" if computed else "pending_model"),
+        "computed_at": entry.get("computed_at") if computed else None,
+        "mean_dry_yield_tonne_ha": summary.get("mean_dry_yield_tonne_ha") if computed else None,
     }
 
 
@@ -253,89 +263,65 @@ def _local_index() -> dict[str, dict[str, Any]]:
 
 
 def list_presets() -> list[dict[str, Any]]:
-    local_definitions = load_definitions()
-    local_results = _local_index()
-
-    rows: list[dict[str, Any]] | None = None
-    results: dict[str, dict[str, Any]] = {}
+    # Repository definitions are canonical; Supabase stores computed results.
+    definitions = load_definitions()
+    results = _local_index()
     if supabase.is_configured():
         try:
-            rows = supabase.select(
-                "rotations",
-                {
-                    "select": "slug,name,description,definition,seasons,updated_at",
-                    "order": "name.asc",
-                },
+            result_rows = supabase.select(
+                "rotation_results",
+                {"select": "slug,years,model_version,computed_at,result", "order": "slug.asc"},
             )
-            if rows:
-                result_rows = supabase.select(
-                    "rotation_results",
-                    {
-                        "select": "slug,years,model_version,computed_at,result",
-                        "order": "slug.asc",
-                    },
-                )
-                results = {row["slug"]: row for row in result_rows}
+            results.update({row["slug"]: row for row in result_rows})
         except supabase.SupabaseError:
-            rows = None
-
-    if not rows:
-        rows = local_definitions
-        results = local_results
+            pass
 
     presets = []
-    for row in rows:
-        definition = row.get("definition") or {}
-        slug = row.get("slug") or definition.get("slug")
+    for definition in definitions:
+        slug = definition["slug"]
         entry = results.get(slug)
-        presets.append(
-            {
-                "slug": slug,
-                "name": row.get("name") or definition.get("name"),
-                "description": row.get("description"),
-                "seasons": row.get("seasons") or definition.get("seasons"),
-                "years": entry.get("years") if entry else definition.get("seasons"),
-                "updated_at": row.get("updated_at"),
-                **_summary(entry),
-            }
-        )
+        if definition.get("status") == "pending_model":
+            entry = None
+        presets.append({
+            "slug": slug,
+            "name": definition["name"],
+            "description": definition.get("description"),
+            "status": definition.get("status", "ready"),
+            "seasons": definition.get("seasons", 0),
+            "years": (entry or {}).get("years", definition.get("seasons", 0)),
+            "updated_at": (entry or {}).get("updated_at"),
+            **_summary(entry),
+        })
     return presets
 
-
 def get_preset(slug: str) -> dict[str, Any]:
-    definition: dict[str, Any] | None = None
+    # Use the checked-in definition so stale database rows cannot resurrect retired presets.
+    definition = get_local_definition(slug)
     result_entry: dict[str, Any] | None = None
     source = "local"
-
-    if supabase.is_configured():
+    if definition.get("status") != "pending_model" and supabase.is_configured():
         try:
-            row = _select_definition(slug)
-            if row:
-                definition = row.get("definition") or {}
-                result_entry = _select_result(slug)
+            result_entry = _select_result(slug)
+            if result_entry:
                 source = "supabase"
         except supabase.SupabaseError:
-            definition = None
             result_entry = None
-
-    if not definition:
-        definition = get_local_definition(slug)
+    if result_entry is None and definition.get("status") != "pending_model":
         result_entry = read_local_result(slug)
-        source = "local"
 
     return {
         "slug": slug,
         "name": definition.get("name"),
         "definition": definition,
         "source": source,
-        "years": (result_entry or {}).get("years", definition.get("seasons")),
+        "years": (result_entry or {}).get("years", definition.get("seasons", 0)),
         "model_version": (result_entry or {}).get("model_version"),
         "computed_at": (result_entry or {}).get("computed_at"),
-        "computed": bool(result_entry),
+        "computed": _summary(result_entry)["computed"],
+        "status": definition.get("status", _summary(result_entry).get("status", "ready")),
         "result": (result_entry or {}).get("result"),
         **_summary(result_entry),
     }
-
 
 def precompute_preset(
     slug: str,
@@ -343,21 +329,25 @@ def precompute_preset(
     push: bool = True,
     write_local: bool = True,
 ) -> dict[str, Any]:
-    from api.services.simulation import run_rotation
-
     definition = get_local_definition(slug)
-    request = build_rotation_request(definition)
-    result = run_rotation(request)
-    years = int(definition.get("seasons", len(request.seasons)))
+    years = int(definition.get("seasons", 0))
     computed_at = _now_iso()
 
-    payload = {
-        "slug": slug,
-        "years": years,
-        "model_version": MODEL_VERSION,
-        "computed_at": computed_at,
-        "result": result,
-    }
+    if definition.get("status") == "pending_model":
+        result = {
+            "success": False,
+            "status": "pending_model",
+            "message": "No yield is published until a perennial-crop model is parameterized and validated.",
+            "summary": {"n_seasons": 0, "mean_dry_yield_tonne_ha": None},
+        }
+    else:
+        from api.services.simulation import run_rotation
+        request = build_rotation_request(definition)
+        result = run_rotation(request)
+        years = int(definition.get("seasons", len(request.seasons)))
+
+    payload = {"slug": slug, "years": years, "model_version": MODEL_VERSION,
+               "computed_at": computed_at, "result": result}
     if write_local:
         save_local_result(slug, result, years=years, computed_at=computed_at)
 
@@ -371,9 +361,5 @@ def precompute_preset(
         except supabase.SupabaseError as exc:
             supabase_error = str(exc)
 
-    return {
-        **payload,
-        "stored_locally": write_local,
-        "stored_in_supabase": stored_in_supabase,
-        "supabase_error": supabase_error,
-    }
+    return {**payload, "stored_locally": write_local,
+            "stored_in_supabase": stored_in_supabase, "supabase_error": supabase_error}

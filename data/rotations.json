@@ -1,71 +1,82 @@
 [
   {
-    "slug": "maiz-trigo-soya",
-    "name": "Maíz - Trigo - Soja",
-    "description": "Rotación de tres cultivos en Jocotenango, Guatemala. Definición provisional hasta cerrar el plan agronómico.",
-    "seasons": 20,
-    "start_year": 2004,
-    "weather": { "type": "builtin", "name": "jocotenango_climate.txt" },
-    "soil_file": "jocotenango_soil.json",
-    "initial_water_content": { "value": ["FC"] },
-    "irrigation": { "method": 0 },
-    "cycle": [
-      {
-        "crop": { "name": "Maize", "planting_date": "05/01" },
-        "sim_start": "05/01",
-        "sim_end": "10/31"
-      },
-      {
-        "crop": { "name": "Wheat", "planting_date": "05/01" },
-        "sim_start": "05/01",
-        "sim_end": "09/15"
-      },
-      {
-        "crop": { "name": "Soybean", "planting_date": "05/15" },
-        "sim_start": "05/15",
-        "sim_end": "10/15"
-      }
-    ]
-  },
-  {
     "slug": "maiz-monocultivo",
-    "name": "Maíz monocultivo",
-    "description": "Línea base de maíz de secano durante 20 temporadas.",
+    "name": "Maíz",
+    "description": "Escenario de maíz de secano en Jocotenango, Guatemala. Simulación AquaCrop de 20 temporadas; resultado preliminar hasta validarlo con datos de campo.",
+    "status": "ready",
+    "simulation_supported": true,
     "seasons": 20,
     "start_year": 2004,
-    "weather": { "type": "builtin", "name": "jocotenango_climate.txt" },
+    "weather": {
+      "type": "builtin",
+      "name": "jocotenango_climate.txt"
+    },
     "soil_file": "jocotenango_soil.json",
-    "initial_water_content": { "value": ["FC"] },
-    "irrigation": { "method": 0 },
+    "initial_water_content": {
+      "value": [
+        "FC"
+      ]
+    },
+    "irrigation": {
+      "method": 0
+    },
     "cycle": [
       {
-        "crop": { "name": "Maize", "planting_date": "05/01" },
+        "crop": {
+          "name": "Maize",
+          "planting_date": "05/01"
+        },
         "sim_start": "05/01",
         "sim_end": "10/31"
       }
     ]
   },
   {
-    "slug": "maiz-frijol",
-    "name": "Maíz - Frijol",
-    "description": "Rotación de maíz con leguminosa para comparar el efecto sobre el rendimiento.",
-    "seasons": 20,
+    "slug": "aguacate-huerto",
+    "name": "Huerto de aguacate",
+    "description": "Escenario de huerto perenne de aguacate para Jocotenango. Pendiente de parametrización y validación con datos locales; no se publica rendimiento simulado.",
+    "status": "pending_model",
+    "simulation_supported": false,
+    "system_type": "perennial_orchard",
+    "crop": "Avocado",
+    "location": "Jocotenango, Guatemala",
+    "required_data": [
+      "variedad y portainjerto",
+      "edad del huerto y curva de entrada en producción",
+      "densidad y marco de plantación",
+      "rendimientos observados por año",
+      "manejo de riego y poda"
+    ],
+    "seasons": 0,
     "start_year": 2004,
-    "weather": { "type": "builtin", "name": "jocotenango_climate.txt" },
-    "soil_file": "jocotenango_soil.json",
-    "initial_water_content": { "value": ["FC"] },
-    "irrigation": { "method": 0 },
-    "cycle": [
-      {
-        "crop": { "name": "Maize", "planting_date": "05/01" },
-        "sim_start": "05/01",
-        "sim_end": "10/31"
-      },
-      {
-        "crop": { "name": "DryBean", "planting_date": "05/15" },
-        "sim_start": "05/15",
-        "sim_end": "09/30"
-      }
-    ]
+    "weather": {
+      "type": "builtin",
+      "name": "jocotenango_climate.txt"
+    },
+    "soil_file": "jocotenango_soil.json"
+  },
+  {
+    "slug": "limon-huerto",
+    "name": "Huerto de limón",
+    "description": "Escenario de huerto perenne de limón para Jocotenango. Pendiente de parametrización y validación con datos locales; no se publica rendimiento simulado.",
+    "status": "pending_model",
+    "simulation_supported": false,
+    "system_type": "perennial_orchard",
+    "crop": "Lemon",
+    "location": "Jocotenango, Guatemala",
+    "required_data": [
+      "tipo de limón y portainjerto",
+      "edad del huerto y curva de entrada en producción",
+      "densidad y marco de plantación",
+      "rendimientos observados por año",
+      "manejo de riego y poda"
+    ],
+    "seasons": 0,
+    "start_year": 2004,
+    "weather": {
+      "type": "builtin",
+      "name": "jocotenango_climate.txt"
+    },
+    "soil_file": "jocotenango_soil.json"
   }
 ]

@@ -7,7 +7,7 @@ happens in :mod:`api.services.simulation`.
 from __future__ import annotations
 
 import re
-from datetime import date
+from datetime import date, datetime
 from typing import Annotated, Any, Dict, List, Literal, Optional, Union
 
 from pydantic import BaseModel, Field, field_validator, model_validator
@@ -19,12 +19,20 @@ _MONTH_DAY_PATTERN = re.compile(r"^\d{1,2}/\d{1,2}$")
 def _validate_sim_date(value: str) -> str:
     if not _DATE_PATTERN.match(value):
         raise ValueError("date must use the format 'YYYY/MM/DD'")
+    try:
+        datetime.strptime(value, "%Y/%m/%d")
+    except ValueError as exc:
+        raise ValueError("date must be a valid calendar date in 'YYYY/MM/DD' format") from exc
     return value
 
 
 def _validate_month_day(value: str) -> str:
     if not _MONTH_DAY_PATTERN.match(value):
         raise ValueError("date must use the format 'MM/DD'")
+    try:
+        datetime.strptime(f"2000/{value}", "%Y/%m/%d")
+    except ValueError as exc:
+        raise ValueError("date must be a valid calendar date in 'MM/DD' format") from exc
     return value
 
 
@@ -90,6 +98,8 @@ class SoilConfig(BaseModel):
                 raise ValueError("layers can only be provided when soil_type='custom'")
             if any(value <= 0 for value in (self.dz or [])):
                 raise ValueError("dz values must be positive")
+            if self.dz and abs(sum(self.dz) - sum(layer.thickness for layer in self.layers)) > 0.01:
+                raise ValueError("dz compartments must cover the same depth as the custom soil layers")
         if self.soil_type == "custom" and not self.layers:
             raise ValueError("soil_type='custom' requires at least one layer")
         return self
@@ -220,6 +230,12 @@ class SimulationRequest(BaseModel):
     def _check_dates(cls, value: str) -> str:
         return _validate_sim_date(value)
 
+    @model_validator(mode="after")
+    def _check_date_order(self) -> "SimulationRequest":
+        if datetime.strptime(self.sim_start_time, "%Y/%m/%d") > datetime.strptime(self.sim_end_time, "%Y/%m/%d"):
+            raise ValueError("sim_start_time must be on or before sim_end_time")
+        return self
+
 
 class SeasonSpec(BaseModel):
     sim_start_time: str
@@ -232,6 +248,12 @@ class SeasonSpec(BaseModel):
     @classmethod
     def _check_dates(cls, value: str) -> str:
         return _validate_sim_date(value)
+
+    @model_validator(mode="after")
+    def _check_date_order(self) -> "SeasonSpec":
+        if datetime.strptime(self.sim_start_time, "%Y/%m/%d") > datetime.strptime(self.sim_end_time, "%Y/%m/%d"):
+            raise ValueError("sim_start_time must be on or before sim_end_time")
+        return self
 
 
 class RotationRequest(BaseModel):
@@ -255,6 +277,7 @@ class PlantingDateRequest(BaseModel):
     soil: SoilConfig = Field(default_factory=SoilConfig)
     crop: CropConfig
     candidate_planting_dates: List[str] = Field(min_length=1)
+    fallow_field_management: FieldManagementConfig = Field(default_factory=FieldManagementConfig)
     initial_water_content: InitialWaterContentConfig = Field(default_factory=InitialWaterContentConfig)
     irrigation: IrrigationConfig = Field(default_factory=IrrigationConfig)
     field_management: FieldManagementConfig = Field(default_factory=FieldManagementConfig)
@@ -272,6 +295,12 @@ class PlantingDateRequest(BaseModel):
         for value in values:
             _validate_month_day(value)
         return values
+
+    @model_validator(mode="after")
+    def _check_date_order(self) -> "PlantingDateRequest":
+        if datetime.strptime(self.sim_start_time, "%Y/%m/%d") > datetime.strptime(self.sim_end_time, "%Y/%m/%d"):
+            raise ValueError("sim_start_time must be on or before sim_end_time")
+        return self
 
 
 class SimulationResponse(BaseModel):
