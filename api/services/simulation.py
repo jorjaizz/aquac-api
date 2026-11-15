@@ -326,11 +326,14 @@ def run_rotation(request: RotationRequest) -> dict[str, Any]:
                 f"season {index + 1} ({season.crop.name}, "
                 f"{season.sim_start_time} to {season.sim_end_time}) produced no harvest results"
             )
+        display_crop = season.crop.display_name or season.crop.name
+        for stat in payload["final_stats"]:
+            stat["crop Type"] = display_crop
         all_stats.extend(payload["final_stats"])
         seasons.append(
             {
                 "index": index,
-                "crop": season.crop.name,
+                "crop": display_crop,
                 "sim_start_time": season.sim_start_time,
                 "sim_end_time": season.sim_end_time,
                 "execution_time_seconds": round(elapsed, 4),
@@ -345,6 +348,11 @@ def run_rotation(request: RotationRequest) -> dict[str, Any]:
         for record in all_stats
         if record.get("Dry yield (tonne/ha)") is not None
     ]
+    fresh_yields = [
+        float(record["Fresh yield (tonne/ha)"])
+        for record in all_stats
+        if record.get("Fresh yield (tonne/ha)") is not None
+    ]
     irrigation_total = sum(
         float(record["Seasonal irrigation (mm)"])
         for record in all_stats
@@ -353,6 +361,7 @@ def run_rotation(request: RotationRequest) -> dict[str, Any]:
     summary = {
         "n_seasons": len(seasons),
         "mean_dry_yield_tonne_ha": round(sum(yields) / len(yields), 4) if yields else None,
+        "mean_fresh_yield_tonne_ha": round(sum(fresh_yields) / len(fresh_yields), 4) if fresh_yields else None,
         "total_seasonal_irrigation_mm": round(irrigation_total, 4),
         "carry_water_between_seasons": request.carry_water_between_seasons,
     }

@@ -38,19 +38,21 @@ def test_expand_seasons_is_chronological() -> None:
     seasons = presets.expand_seasons(definition)
     assert len(seasons) == 20
     assert all(season["crop"]["name"] == "Maize" for season in seasons)
-    assert seasons[0]["sim_start_time"] == "2004/05/01"
-    assert seasons[1]["sim_start_time"] == "2005/05/01"
+    assert seasons[0]["sim_start_time"] == "2004/01/01"
+    assert seasons[1]["sim_start_time"] == "2005/01/01"
 
 
-def test_orchard_presets_are_pending_not_simulated() -> None:
+def test_orchard_presets_use_twenty_year_annualized_proxies() -> None:
     definitions = presets.load_definitions()
     by_slug = {entry["slug"]: entry for entry in definitions}
-    assert by_slug["aguacate-huerto"]["name"] == "Huerto de aguacate"
-    assert by_slug["limon-huerto"]["name"] == "Huerto de limón"
-    assert by_slug["aguacate-huerto"]["status"] == "pending_model"
-    assert by_slug["limon-huerto"]["status"] == "pending_model"
-    with pytest.raises(presets.PresetError, match="perennial-crop model"):
-        presets.build_rotation_request(by_slug["aguacate-huerto"])
+    for slug, expected in (("aguacate-huerto", "Aguacate"), ("limon-huerto", "Limón")):
+        definition = by_slug[slug]
+        assert definition["status"] == "ready_approximate"
+        assert definition["seasons"] == 20
+        assert definition["simulation_supported"] is True
+        assert definition["cycle"][0]["crop"]["display_name"].startswith(expected)
+        assert definition["cycle"][0]["crop"]["parameters"]["WP"] > 0
+
 
 def test_build_rotation_request_uses_custom_soil() -> None:
     definition = presets.get_local_definition("maiz-monocultivo")
@@ -70,10 +72,12 @@ def test_list_presets_falls_back_to_local() -> None:
     assert all("computed" in entry for entry in body["presets"])
     by_slug = {entry["slug"]: entry for entry in body["presets"]}
     assert by_slug["maiz-monocultivo"]["computed"] is True
-    assert by_slug["aguacate-huerto"]["status"] == "pending_model"
-    assert by_slug["aguacate-huerto"]["computed"] is False
-    assert by_slug["limon-huerto"]["status"] == "pending_model"
-    assert by_slug["limon-huerto"]["computed"] is False
+    assert by_slug["aguacate-huerto"]["status"] == "ready_approximate"
+    assert by_slug["aguacate-huerto"]["computed"] is True
+    assert by_slug["aguacate-huerto"]["years"] == 20
+    assert by_slug["limon-huerto"]["status"] == "ready_approximate"
+    assert by_slug["limon-huerto"]["computed"] is True
+    assert by_slug["limon-huerto"]["years"] == 20
 
 
 def test_unknown_preset_returns_404() -> None:

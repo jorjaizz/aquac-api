@@ -85,3 +85,10 @@ upserted into Supabase.
 - Model: AquaCrop-OSPy 3.1.0, Apache 2.0. See `LICENSE`.
 - Weather: NASA POWER daily data for the demo site.
 - Soil: ISRIC SoilGrids 2.0 with Saxton-Rawls pedotransfer functions.
+
+
+## 20-year crop presets and estimate limits
+
+The presets use the bundled Jocotenango daily climate series for 2004–2023 and the bundled SoilGrids-derived soil profile. Each preset runs one crop season per calendar year with a full-year soil-water balance. Maize uses AquaCrop's built-in Maize parameters.
+
+Avocado and lemon are explicitly labeled annualized mature-orchard proxies. They reuse AquaCrop's built-in Maize phenology and water-stress response, with crop-specific water productivity, harvest index, and fresh-matter settings benchmark-adjusted to Guatemala's 2019–2023 national yield estimates published by MAGA/FAO. These are model-based approximations, not a perennial-tree lifecycle simulation or a local field calibration. The APIs expose both mean dry and fresh yield; for fruit comparisons, inspect fresh yield and the preset's `simulation_method` metadata.

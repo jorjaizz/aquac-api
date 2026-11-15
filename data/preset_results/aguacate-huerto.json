@@ -1,0 +1,398 @@
+{
+  "slug": "aguacate-huerto",
+  "years": 20,
+  "model_version": "3.1.0",
+  "computed_at": "2026-11-15T20:51:15.154109+00:00",
+  "result": {
+    "success": true,
+    "seasons": [
+      {
+        "index": 0,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2004/01/01",
+        "sim_end_time": "2004/12/31",
+        "execution_time_seconds": 0.8974,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2004-09-10T00:00:00",
+            "Harvest Date (Step)": 252,
+            "Dry yield (tonne/ha)": 3.663944102135292,
+            "Fresh yield (tonne/ha)": 14.655776408541168,
+            "Yield potential (tonne/ha)": 3.677804549052821,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2005/01/01",
+        "sim_end_time": "2005/12/31",
+        "execution_time_seconds": 0.8643,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2005-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 2.47050389506597,
+            "Fresh yield (tonne/ha)": 9.88201558026388,
+            "Yield potential (tonne/ha)": 2.4795780832340255,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2006/01/01",
+        "sim_end_time": "2006/12/31",
+        "execution_time_seconds": 0.8156,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2006-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 3.1778670096571844,
+            "Fresh yield (tonne/ha)": 12.711468038628738,
+            "Yield potential (tonne/ha)": 3.191679864858565,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2007/01/01",
+        "sim_end_time": "2007/12/31",
+        "execution_time_seconds": 0.8199,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2007-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 2.0403278546372117,
+            "Fresh yield (tonne/ha)": 8.161311418548847,
+            "Yield potential (tonne/ha)": 2.054398026923603,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 4,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2008/01/01",
+        "sim_end_time": "2008/12/31",
+        "execution_time_seconds": 0.8692,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2008-09-10T00:00:00",
+            "Harvest Date (Step)": 252,
+            "Dry yield (tonne/ha)": 2.3781974987650223,
+            "Fresh yield (tonne/ha)": 9.51278999506009,
+            "Yield potential (tonne/ha)": 2.3870221758834687,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 5,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2009/01/01",
+        "sim_end_time": "2009/12/31",
+        "execution_time_seconds": 0.714,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2009-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 2.2749151141577433,
+            "Fresh yield (tonne/ha)": 9.099660456630973,
+            "Yield potential (tonne/ha)": 2.284523507158204,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 6,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2010/01/01",
+        "sim_end_time": "2010/12/31",
+        "execution_time_seconds": 0.9548,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2010-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 2.9670502576611546,
+            "Fresh yield (tonne/ha)": 11.868201030644618,
+            "Yield potential (tonne/ha)": 2.977426589478571,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 7,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2011/01/01",
+        "sim_end_time": "2011/12/31",
+        "execution_time_seconds": 0.8412,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2011-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 0.35981936255676494,
+            "Fresh yield (tonne/ha)": 1.4392774502270598,
+            "Yield potential (tonne/ha)": 0.36198831173212015,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2012/01/01",
+        "sim_end_time": "2012/12/31",
+        "execution_time_seconds": 0.794,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2012-09-10T00:00:00",
+            "Harvest Date (Step)": 252,
+            "Dry yield (tonne/ha)": 0.8774746521100509,
+            "Fresh yield (tonne/ha)": 3.5098986084402037,
+            "Yield potential (tonne/ha)": 3.099221418350484,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 9,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2013/01/01",
+        "sim_end_time": "2013/12/31",
+        "execution_time_seconds": 0.774,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2013-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 1.567135831714178,
+            "Fresh yield (tonne/ha)": 6.268543326856712,
+            "Yield potential (tonne/ha)": 1.5869207525587223,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 10,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2014/01/01",
+        "sim_end_time": "2014/12/31",
+        "execution_time_seconds": 0.7833,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2014-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 2.157599621317174,
+            "Fresh yield (tonne/ha)": 8.630398485268696,
+            "Yield potential (tonne/ha)": 2.5290818053136688,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 11,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2015/01/01",
+        "sim_end_time": "2015/12/31",
+        "execution_time_seconds": 0.8148,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2015-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 1.791915112648463,
+            "Fresh yield (tonne/ha)": 7.167660450593852,
+            "Yield potential (tonne/ha)": 2.096020537954096,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 12,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2016/01/01",
+        "sim_end_time": "2016/12/31",
+        "execution_time_seconds": 0.8078,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2016-09-10T00:00:00",
+            "Harvest Date (Step)": 252,
+            "Dry yield (tonne/ha)": 0.0,
+            "Fresh yield (tonne/ha)": 0.0,
+            "Yield potential (tonne/ha)": 0.0,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 13,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2017/01/01",
+        "sim_end_time": "2017/12/31",
+        "execution_time_seconds": 0.8155,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2017-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 3.836590971730905,
+            "Fresh yield (tonne/ha)": 15.34636388692362,
+            "Yield potential (tonne/ha)": 3.8474329731938113,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 14,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2018/01/01",
+        "sim_end_time": "2018/12/31",
+        "execution_time_seconds": 0.7617,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2018-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 4.554798247016557,
+            "Fresh yield (tonne/ha)": 18.21919298806623,
+            "Yield potential (tonne/ha)": 4.540920428728397,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 15,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2019/01/01",
+        "sim_end_time": "2019/12/31",
+        "execution_time_seconds": 0.7591,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2019-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 4.545274746034587,
+            "Fresh yield (tonne/ha)": 18.181098984138348,
+            "Yield potential (tonne/ha)": 4.559431986751839,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 16,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2020/01/01",
+        "sim_end_time": "2020/12/31",
+        "execution_time_seconds": 0.9933,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2020-09-10T00:00:00",
+            "Harvest Date (Step)": 252,
+            "Dry yield (tonne/ha)": 4.276016734062208,
+            "Fresh yield (tonne/ha)": 17.10406693624883,
+            "Yield potential (tonne/ha)": 4.299212169165537,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 17,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2021/01/01",
+        "sim_end_time": "2021/12/31",
+        "execution_time_seconds": 0.8736,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2021-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 3.6244864282506315,
+            "Fresh yield (tonne/ha)": 14.497945713002526,
+            "Yield potential (tonne/ha)": 3.6365731711510723,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 18,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2022/01/01",
+        "sim_end_time": "2022/12/31",
+        "execution_time_seconds": 0.7762,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2022-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 5.314099015822768,
+            "Fresh yield (tonne/ha)": 21.25639606329107,
+            "Yield potential (tonne/ha)": 5.925758712115529,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      },
+      {
+        "index": 19,
+        "crop": "Aguacate (aproximación AquaCrop)",
+        "sim_start_time": "2023/01/01",
+        "sim_end_time": "2023/12/31",
+        "execution_time_seconds": 0.7024,
+        "final_stats": [
+          {
+            "Season": 0,
+            "crop Type": "Aguacate (aproximación AquaCrop)",
+            "Harvest Date (YYYY/MM/DD)": "2023-09-10T00:00:00",
+            "Harvest Date (Step)": 251,
+            "Dry yield (tonne/ha)": 0.0,
+            "Fresh yield (tonne/ha)": 0.0,
+            "Yield potential (tonne/ha)": 0.0,
+            "Seasonal irrigation (mm)": 0
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "n_seasons": 20,
+      "mean_dry_yield_tonne_ha": 2.5939,
+      "mean_fresh_yield_tonne_ha": 10.3756,
+      "total_seasonal_irrigation_mm": 0.0,
+      "carry_water_between_seasons": true
+    }
+  }
+}

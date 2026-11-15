@@ -106,7 +106,8 @@ class SoilConfig(BaseModel):
 
 
 class CropConfig(BaseModel):
-    name: str = Field(default="Maize", description="Built-in crop name or 'custom'")
+    name: str = Field(default="Maize", description="Built-in crop parameter base or 'custom'")
+    display_name: Optional[str] = Field(default=None, description="Human-readable scenario label for outputs")
     planting_date: str = Field(default="05/01", description="Planting date (MM/DD)")
     harvest_date: Optional[str] = Field(default=None, description="Latest harvest date (MM/DD)")
     parameters: Dict[str, Any] = Field(

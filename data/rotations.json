@@ -2,7 +2,7 @@
   {
     "slug": "maiz-monocultivo",
     "name": "Maíz",
-    "description": "Escenario de maíz de secano en Jocotenango, Guatemala. Simulación AquaCrop de 20 temporadas; resultado preliminar hasta validarlo con datos de campo.",
+    "description": "Escenario de maíz de secano en Jocotenango. Simulación AquaCrop anual con clima histórico 2004–2023; estimación de modelo, sin validación local de rendimiento.",
     "status": "ready",
     "simulation_supported": true,
     "seasons": 20,
@@ -26,57 +26,107 @@
           "name": "Maize",
           "planting_date": "05/01"
         },
-        "sim_start": "05/01",
-        "sim_end": "10/31"
+        "sim_start": "01/01",
+        "sim_end": "12/31"
       }
-    ]
+    ],
+    "carry_water_between_seasons": true,
+    "simulation_method": "AquaCrop built-in Maize crop parameters; full calendar-year weather balance."
   },
   {
     "slug": "aguacate-huerto",
     "name": "Huerto de aguacate",
-    "description": "Escenario de huerto perenne de aguacate para Jocotenango. Pendiente de parametrización y validación con datos locales; no se publica rendimiento simulado.",
-    "status": "pending_model",
-    "simulation_supported": false,
-    "system_type": "perennial_orchard",
+    "description": "Estimación anual de un huerto adulto de aguacate para probar AquaCrop y la API; parámetros ajustados como proxy al promedio nacional de Guatemala, no calibrados con parcela local.",
+    "status": "ready_approximate",
+    "simulation_supported": true,
+    "system_type": "mature_perennial_orchard_annual_proxy",
     "crop": "Avocado",
     "location": "Jocotenango, Guatemala",
-    "required_data": [
-      "variedad y portainjerto",
-      "edad del huerto y curva de entrada en producción",
-      "densidad y marco de plantación",
-      "rendimientos observados por año",
-      "manejo de riego y poda"
-    ],
-    "seasons": 0,
+    "seasons": 20,
     "start_year": 2004,
     "weather": {
       "type": "builtin",
       "name": "jocotenango_climate.txt"
     },
-    "soil_file": "jocotenango_soil.json"
+    "soil_file": "jocotenango_soil.json",
+    "initial_water_content": {
+      "value": [
+        "FC"
+      ]
+    },
+    "irrigation": {
+      "method": 0
+    },
+    "carry_water_between_seasons": true,
+    "simulation_method": "AquaCrop annualized mature-orchard proxy using built-in Maize phenology and water-stress response; fruit WP/HI/YldWC are benchmark-adjusted to MAGA/FAO national averages. Not a perennial-tree lifecycle model or a Jocotenango field calibration.",
+    "benchmark": {
+      "source": "MAGA / FAO national estimate, 2019–2023 average 231.42 qq/ha ≈ 10.5 t/ha",
+      "target_t_ha": 10.5,
+      "period": "2019-2023 national average"
+    },
+    "cycle": [
+      {
+        "crop": {
+          "name": "Maize",
+          "display_name": "Aguacate (aproximación AquaCrop)",
+          "planting_date": "05/01",
+          "parameters": {
+            "WP": 25.15,
+            "HI0": 0.25,
+            "YldWC": 25.0
+          }
+        },
+        "sim_start": "01/01",
+        "sim_end": "12/31"
+      }
+    ]
   },
   {
     "slug": "limon-huerto",
     "name": "Huerto de limón",
-    "description": "Escenario de huerto perenne de limón para Jocotenango. Pendiente de parametrización y validación con datos locales; no se publica rendimiento simulado.",
-    "status": "pending_model",
-    "simulation_supported": false,
-    "system_type": "perennial_orchard",
+    "description": "Estimación anual de un huerto adulto de limón para probar AquaCrop y la API; parámetros ajustados como proxy al promedio nacional de Guatemala, no calibrados con parcela local.",
+    "status": "ready_approximate",
+    "simulation_supported": true,
+    "system_type": "mature_perennial_orchard_annual_proxy",
     "crop": "Lemon",
     "location": "Jocotenango, Guatemala",
-    "required_data": [
-      "tipo de limón y portainjerto",
-      "edad del huerto y curva de entrada en producción",
-      "densidad y marco de plantación",
-      "rendimientos observados por año",
-      "manejo de riego y poda"
-    ],
-    "seasons": 0,
+    "seasons": 20,
     "start_year": 2004,
     "weather": {
       "type": "builtin",
       "name": "jocotenango_climate.txt"
     },
-    "soil_file": "jocotenango_soil.json"
+    "soil_file": "jocotenango_soil.json",
+    "initial_water_content": {
+      "value": [
+        "FC"
+      ]
+    },
+    "irrigation": {
+      "method": 0
+    },
+    "carry_water_between_seasons": true,
+    "simulation_method": "AquaCrop annualized mature-orchard proxy using built-in Maize phenology and water-stress response; fruit WP/HI/YldWC are benchmark-adjusted to MAGA/FAO national averages. Not a perennial-tree lifecycle model or a Jocotenango field calibration.",
+    "benchmark": {
+      "source": "MAGA / FAO national estimate, 2019–2023 average ≈ 489 qq/ha ≈ 22.2 t/ha",
+      "target_t_ha": 22.2,
+      "period": "2019-2023 national average"
+    },
+    "cycle": [
+      {
+        "crop": {
+          "name": "Maize",
+          "display_name": "Limón (aproximación AquaCrop)",
+          "planting_date": "05/01",
+          "parameters": {
+            "WP": 23.72,
+            "HI0": 0.22,
+            "YldWC": 10.0
+          }
+        },
+        "sim_start": "01/01",
+        "sim_end": "12/31"
+      }
+    ]
   }
 ]

@@ -239,17 +239,21 @@ def _select_result(slug: str) -> dict[str, Any] | None:
 
 def _summary(entry: dict[str, Any] | None) -> dict[str, Any]:
     if not entry:
-        return {"computed": False, "computed_at": None, "mean_dry_yield_tonne_ha": None}
+        return {
+            "computed": False,
+            "computed_at": None,
+            "mean_dry_yield_tonne_ha": None,
+            "mean_fresh_yield_tonne_ha": None,
+        }
     result = entry.get("result") or {}
     summary = result.get("summary") or {}
     computed = bool(result.get("success", True))
     return {
         "computed": computed,
-        "status": result.get("status", "ready" if computed else "pending_model"),
         "computed_at": entry.get("computed_at") if computed else None,
         "mean_dry_yield_tonne_ha": summary.get("mean_dry_yield_tonne_ha") if computed else None,
+        "mean_fresh_yield_tonne_ha": summary.get("mean_fresh_yield_tonne_ha") if computed else None,
     }
-
 
 def _local_index() -> dict[str, dict[str, Any]]:
     index: dict[str, dict[str, Any]] = {}
@@ -286,11 +290,11 @@ def list_presets() -> list[dict[str, Any]]:
             "slug": slug,
             "name": definition["name"],
             "description": definition.get("description"),
-            "status": definition.get("status", "ready"),
             "seasons": definition.get("seasons", 0),
             "years": (entry or {}).get("years", definition.get("seasons", 0)),
             "updated_at": (entry or {}).get("updated_at"),
             **_summary(entry),
+            "status": definition.get("status", "ready"),
         })
     return presets
 
@@ -318,9 +322,9 @@ def get_preset(slug: str) -> dict[str, Any]:
         "model_version": (result_entry or {}).get("model_version"),
         "computed_at": (result_entry or {}).get("computed_at"),
         "computed": _summary(result_entry)["computed"],
-        "status": definition.get("status", _summary(result_entry).get("status", "ready")),
         "result": (result_entry or {}).get("result"),
         **_summary(result_entry),
+        "status": definition.get("status", "ready"),
     }
 
 def precompute_preset(
