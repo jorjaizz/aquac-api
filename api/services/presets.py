@@ -226,6 +226,31 @@ def _select_definition(slug: str) -> dict[str, Any] | None:
     return rows[0] if rows else None
 
 
+def get_definition_for_simulation(
+    slug: str, *, source: str = "local"
+) -> tuple[dict[str, Any], str]:
+    """Load a known preset definition from Supabase or the checked-in fallback."""
+    local_definition = get_local_definition(slug)
+    if source == "local":
+        return local_definition, "local"
+    if source != "supabase":
+        raise PresetError("definition source must be 'local' or 'supabase'")
+    if not supabase.is_configured():
+        raise PresetError("Supabase is required to simulate a database preset")
+
+    try:
+        row = _select_definition(slug)
+    except supabase.SupabaseError as exc:
+        raise PresetError(f"could not load the preset definition from Supabase: {exc}") from exc
+    if row is None:
+        raise PresetNotFound(f"preset '{slug}' is not stored in Supabase")
+    definition = row.get("definition")
+    if not isinstance(definition, dict) or definition.get("slug") != slug:
+        raise PresetError(f"Supabase definition for '{slug}' is invalid")
+    _validate_definition(definition)
+    return definition, "supabase"
+
+
 def _select_result(slug: str) -> dict[str, Any] | None:
     rows = supabase.select(
         "rotation_results",
@@ -332,8 +357,11 @@ def precompute_preset(
     *,
     push: bool = True,
     write_local: bool = True,
+    definition_source: str = "local",
 ) -> dict[str, Any]:
-    definition = get_local_definition(slug)
+    definition, definition_source = get_definition_for_simulation(
+        slug, source=definition_source
+    )
     years = int(definition.get("seasons", 0))
     computed_at = _now_iso()
 
@@ -359,11 +387,13 @@ def precompute_preset(
     supabase_error: str | None = None
     if push and supabase.is_configured():
         try:
-            upsert_definition(definition)
+            if definition_source == "local":
+                upsert_definition(definition)
             upsert_result(slug, result, years=years, computed_at=computed_at)
             stored_in_supabase = True
         except supabase.SupabaseError as exc:
             supabase_error = str(exc)
 
-    return {**payload, "stored_locally": write_local,
+    return {**payload, "definition_source": definition_source,
+            "stored_locally": write_local,
             "stored_in_supabase": stored_in_supabase, "supabase_error": supabase_error}

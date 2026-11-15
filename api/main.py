@@ -60,5 +60,6 @@ def root() -> dict:
             "/simulate/planting-dates",
             "/presets",
             "/presets/{slug}",
+            "/presets/{slug}/simulate",
         ],
     }

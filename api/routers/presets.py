@@ -36,7 +36,12 @@ def preset(slug: str) -> dict:
 
 @router.post(
     "/{slug}/recompute",
-    summary="Recompute a preset and store the result",
+    summary="Run AquaCrop from the Supabase preset definition and store the result",
+)
+@router.post(
+    "/{slug}/simulate",
+    summary="Simulate a preset using its definition stored in Supabase",
+    include_in_schema=True,
 )
 def recompute(
     slug: str,
@@ -52,7 +57,7 @@ def recompute(
         raise HTTPException(status_code=401, detail="invalid admin token")
 
     try:
-        return precompute_preset(slug)
+        return precompute_preset(slug, definition_source="supabase")
     except PresetNotFound as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
     except SimulationError as exc:

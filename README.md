@@ -49,21 +49,32 @@ The API works without Supabase: presets fall back to `data/rotations.json` and
 
 ```powershell
 python scripts/seed_presets.py
-python scripts/precompute_rotations.py --all --push
+python scripts/precompute_rotations.py --all
 ```
 
 The secret key is server-side only. Row Level Security is enabled with no public
 policies, so the tables cannot be read with the publishable key.
 
-## Presets
+## Presets and data flow
 
-Rotation definitions live in `data/rotations.json`. Each definition declares a
-crop cycle, a start year, the number of seasons, the bundled weather file and
-the soil file under `aquacrop/data`.
+Supabase stores two different things: `rotations` holds each preset's input
+definition (crop parameters, planting calendar, weather and soil references),
+and `rotation_results` holds the AquaCrop output. Daily weather and soil files
+remain bundled with the API under `aquacrop/data`; the database stores their
+references, not copies of those files.
 
-To change the rotations, edit that file and rerun the two scripts above. The
-precomputed results are written to `data/preset_results` and, when configured,
-upserted into Supabase.
+`data/rotations.json` is the checked-in fallback and the source used by the
+seed/precompute scripts. `GET /presets` and `GET /presets/{slug}` return saved
+results (Supabase first, local JSON fallback). To run the model using the input
+definition currently stored in Supabase, call the admin-only
+`POST /presets/{slug}/simulate` with `X-Admin-Token`. It runs the 20 seasons,
+updates `rotation_results`, and returns the result. `POST /presets/{slug}/recompute`
+remains an alias for the same operation. The token
+must stay on a trusted server and must never be sent from browser code.
+
+For VoidHarvest's normal display flow, the frontend should call the GET preset
+endpoint and render its saved result. Recalculation is an administrative action;
+it should not run every time a user opens the page.
 
 ## Deployment (Render)
 

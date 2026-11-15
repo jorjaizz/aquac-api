@@ -108,6 +108,35 @@ def test_recompute_rejects_wrong_token(monkeypatch: pytest.MonkeyPatch) -> None:
     assert response.status_code == 401
 
 
+def test_simulate_preset_reads_definition_from_supabase(monkeypatch: pytest.MonkeyPatch) -> None:
+    from api.services import simulation
+
+    definition = presets.get_local_definition("maiz-monocultivo")
+    monkeypatch.setenv("ADMIN_TOKEN", "expected")
+    monkeypatch.setattr(presets.supabase, "is_configured", lambda: True)
+    monkeypatch.setattr(
+        presets.supabase,
+        "select",
+        lambda table, params: [{"definition": definition}] if table == "rotations" else [],
+    )
+    monkeypatch.setattr(presets, "upsert_result", lambda *args, **kwargs: {})
+    monkeypatch.setattr(presets, "save_local_result", lambda *args, **kwargs: {})
+    monkeypatch.setattr(
+        simulation,
+        "run_rotation",
+        lambda request: {"success": True, "seasons": [], "summary": {"n_seasons": 0}},
+    )
+
+    response = client.post(
+        "/presets/maiz-monocultivo/simulate",
+        headers={"X-Admin-Token": "expected"},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["definition_source"] == "supabase"
+    assert response.json()["stored_in_supabase"] is True
+
+
 def test_local_result_round_trip(tmp_path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(presets, "RESULTS_DIR", tmp_path)
     payload = presets.save_local_result(
