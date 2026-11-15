@@ -1,8 +1,8 @@
 [
   {
     "slug": "maiz-trigo-soya",
-    "name": "Maiz - Trigo - Soja",
-    "description": "Rotacion de tres cultivos en Jocotenango, Guatemala. Definicion provisional hasta cerrar el plan agronomico.",
+    "name": "Maíz - Trigo - Soja",
+    "description": "Rotación de tres cultivos en Jocotenango, Guatemala. Definición provisional hasta cerrar el plan agronómico.",
     "seasons": 20,
     "start_year": 2004,
     "weather": { "type": "builtin", "name": "jocotenango_climate.txt" },
@@ -29,8 +29,8 @@
   },
   {
     "slug": "maiz-monocultivo",
-    "name": "Maiz monocultivo",
-    "description": "Linea base de maiz de secano durante 20 temporadas.",
+    "name": "Maíz monocultivo",
+    "description": "Línea base de maíz de secano durante 20 temporadas.",
     "seasons": 20,
     "start_year": 2004,
     "weather": { "type": "builtin", "name": "jocotenango_climate.txt" },
@@ -47,8 +47,8 @@
   },
   {
     "slug": "maiz-frijol",
-    "name": "Maiz - Frijol",
-    "description": "Rotacion de maiz con leguminosa para comparar el efecto sobre el rendimiento.",
+    "name": "Maíz - Frijol",
+    "description": "Rotación de maíz con leguminosa para comparar el efecto sobre el rendimiento.",
     "seasons": 20,
     "start_year": 2004,
     "weather": { "type": "builtin", "name": "jocotenango_climate.txt" },

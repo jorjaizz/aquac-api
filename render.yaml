@@ -2,6 +2,9 @@ services:
   - type: web
     name: aquacrop-api
     env: docker
+    plan: free
+    region: oregon
+    autoDeploy: true
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health
     envVars:
